@@ -1,32 +1,40 @@
 # Blue Archive Data Pipeline
 
-Automated data extraction and synchronization pipeline for Blue Archive game data.
+Automated data extraction and synchronization pipeline for Blue Archive game data with Supabase integration.
 
 ## 🎯 Features
 
-- **Character Data Extraction**: Fetch comprehensive character data from multiple sources
+- **SchaleDB Integration**: Direct fetch from official SchaleDB repository
+- **Schema-Compatible Sync**: Proper foreign key mapping for Supabase database
 - **Image Assets**: Complete SchaleDB image collection with CDN delivery
-- **Supabase Integration**: Automated database synchronization
-- **Clean Data Pipeline**: Processed and normalized character datasets
+- **Automated Pipeline**: Monthly GitHub Actions workflow for data updates
+- **Data Integrity**: Skills extraction with proper field validation
 
 ## 📁 Repository Structure
 
 ```
 blue-archive-data/
-├── data/
-│   ├── characters/          # Processed character data (JSON)
-│   └── README.md           # Data documentation
-├── images/                 # SchaleDB image assets
-│   ├── student/           # Character images (icon, portrait, collection, lobby)
-│   ├── weapon/            # Weapon images
-│   ├── equipment/         # Equipment images
+├── .github/workflows/      # GitHub Actions automation
+│   └── auto-update.yml    # Monthly data update workflow
+├── data/                  # Processed character data
+│   ├── characters/        # Character data (JSON)
+│   ├── enhanced/         # Enhanced character datasets
+│   ├── events/           # Event data
+│   ├── items/            # Item data
+│   ├── localization/     # Localization data
+│   └── raids/            # Raid data
+├── images/               # SchaleDB image assets
+│   ├── student/          # Character images (icon, portrait, collection, lobby)
+│   ├── weapon/           # Weapon images
+│   ├── equipment/        # Equipment images
 │   └── [other categories] # UI, background, etc.
-├── scripts/               # Data processing scripts
-│   ├── ba_community_fetcher.py
-│   ├── ba_sync_complete.py
-│   ├── clean_characters_data.py
-│   └── create_final_characters_json.py
-└── requirements.txt       # Python dependencies
+├── scripts/              # Data processing scripts
+│   ├── fetch_correct_schaledb.py  # Fetch corrected SchaleDB data
+│   ├── sync_corrected_data.py     # Sync to Supabase with FK mapping
+│   ├── ba_enhanced_fetcher.py     # Enhanced data fetching
+│   ├── ba_supabase_sync.py        # Basic Supabase sync
+│   └── [other scripts]           # Additional processing tools
+└── requirements.txt      # Python dependencies
 ```
 
 ## 🌐 CDN Usage
@@ -40,46 +48,85 @@ https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/images/weapon/{w
 
 ## 🚀 Usage
 
+### Supabase Sync Pipeline
+
 1. **Install dependencies:**
    ```bash
    pip install -r requirements.txt
    ```
 
-2. **Fetch character data:**
+2. **Set environment variables:**
    ```bash
-   python scripts/ba_community_fetcher.py
+   export SUPABASE_URL=your_supabase_project_url
+   export SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
    ```
 
-3. **Process and clean data:**
+3. **Fetch corrected SchaleDB data:**
    ```bash
-   python scripts/clean_characters_data.py
-   python scripts/create_final_characters_json.py
+   python scripts/fetch_correct_schaledb.py
    ```
 
-4. **Sync to Supabase:**
+4. **Sync to Supabase with proper schema mapping:**
    ```bash
-   python scripts/ba_sync_complete.py
+   python scripts/sync_corrected_data.py
+   ```
+
+### Alternative Data Processing
+
+1. **Fetch from community APIs:**
+   ```bash
+   python scripts/ba_enhanced_fetcher.py
+   ```
+
+2. **Basic Supabase sync:**
+   ```bash
+   python scripts/ba_supabase_sync.py
    ```
 
 ## 📊 Data Sources
 
-- **Character Data**: Community APIs and GitHub repositories
-- **Images**: SchaleDB official repository
-- **Database**: Supabase with Row Level Security
+- **Primary**: SchaleDB official repository (https://github.com/SchaleDB/SchaleDB)
+- **Secondary**: Community APIs and GitHub repositories
+- **Images**: SchaleDB official image assets
+- **Database**: Supabase with normalized schema and foreign key relationships
 
 ## 🔧 Configuration
 
-Set environment variables:
+### Environment Variables
 - `SUPABASE_URL`: Your Supabase project URL
 - `SUPABASE_SERVICE_ROLE_KEY`: Service role key for database operations
 
+### Supabase Schema
+The pipeline supports normalized database schema with:
+- Foreign key relationships (schools, clubs, rarities, etc.)
+- JSONB fields for complex data (skills, stats, profile, terrain, weapon)
+- Proper data type mapping and validation
+
+## 🤖 Automation
+
+Monthly GitHub Actions workflow automatically:
+- Checks for Blue Archive version updates
+- Fetches latest character data
+- Processes and validates data
+- Updates repository with new information
+
 ## 📈 Data Statistics
 
-- **Characters**: 300+ processed characters
-- **Images**: 1000+ game assets
+- **Characters**: 300+ processed characters with complete data
+- **Images**: 1000+ game assets (WebP format)
 - **Categories**: Students, weapons, equipment, UI elements
-- **Formats**: JSON data, WebP images
+- **Data Integrity**: Schema-validated with proper foreign key relationships
+- **Update Frequency**: Monthly automated updates
+
+## 🛠️ Schema Compatibility
+
+The pipeline ensures full compatibility with Supabase database schema:
+- ✅ Proper foreign key ID mapping
+- ✅ JSONB field validation
+- ✅ Skills data with conditional field inclusion
+- ✅ No fabricated or invalid fields
+- ✅ Normalized lookup tables support
 
 ---
 
-**Blue Archive Data Pipeline** - Automated, clean, and efficient! 🎯
+**Blue Archive Data Pipeline** - Schema-compatible, automated, and reliable! 🎯
