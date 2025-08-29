@@ -6,9 +6,9 @@ Automated data extraction and synchronization pipeline for Blue Archive game dat
 
 - **SchaleDB Integration**: Direct fetch from official SchaleDB repository
 - **Schema-Compatible Sync**: Proper foreign key mapping for Supabase database
-- **Image Assets**: Complete SchaleDB image collection with CDN delivery
 - **Automated Pipeline**: Monthly GitHub Actions workflow for data updates
 - **Data Integrity**: Skills extraction with proper field validation
+- **Normalized Database**: Foreign key relationships and JSONB fields
 
 ## 📁 Repository Structure
 
@@ -23,27 +23,15 @@ blue-archive-data/
 │   ├── items/            # Item data
 │   ├── localization/     # Localization data
 │   └── raids/            # Raid data
-├── images/               # SchaleDB image assets
-│   ├── student/          # Character images (icon, portrait, collection, lobby)
-│   ├── weapon/           # Weapon images
-│   ├── equipment/        # Equipment images
-│   └── [other categories] # UI, background, etc.
 ├── scripts/              # Data processing scripts
 │   ├── fetch_correct_schaledb.py  # Fetch corrected SchaleDB data
 │   ├── sync_corrected_data.py     # Sync to Supabase with FK mapping
 │   ├── ba_enhanced_fetcher.py     # Enhanced data fetching
 │   ├── ba_supabase_sync.py        # Basic Supabase sync
 │   └── [other scripts]           # Additional processing tools
+├── cdn_manifest.json     # CDN asset manifest
+├── image_manifest.json   # Image asset references
 └── requirements.txt      # Python dependencies
-```
-
-## 🌐 CDN Usage
-
-Images are available via jsdelivr CDN:
-
-```
-https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/images/student/icon/{character_id}.webp
-https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/images/weapon/{weapon_id}.webp
 ```
 
 ## 🚀 Usage
@@ -87,7 +75,6 @@ https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/images/weapon/{w
 
 - **Primary**: SchaleDB official repository (https://github.com/SchaleDB/SchaleDB)
 - **Secondary**: Community APIs and GitHub repositories
-- **Images**: SchaleDB official image assets
 - **Database**: Supabase with normalized schema and foreign key relationships
 
 ## 🔧 Configuration
@@ -106,15 +93,14 @@ The pipeline supports normalized database schema with:
 
 Monthly GitHub Actions workflow automatically:
 - Checks for Blue Archive version updates
-- Fetches latest character data
+- Fetches latest character data from SchaleDB
 - Processes and validates data
 - Updates repository with new information
 
 ## 📈 Data Statistics
 
 - **Characters**: 300+ processed characters with complete data
-- **Images**: 1000+ game assets (WebP format)
-- **Categories**: Students, weapons, equipment, UI elements
+- **Data Categories**: Students, weapons, equipment, events, raids
 - **Data Integrity**: Schema-validated with proper foreign key relationships
 - **Update Frequency**: Monthly automated updates
 
@@ -126,6 +112,12 @@ The pipeline ensures full compatibility with Supabase database schema:
 - ✅ Skills data with conditional field inclusion
 - ✅ No fabricated or invalid fields
 - ✅ Normalized lookup tables support
+
+## 🔗 External Resources
+
+- **Images**: Referenced via SchaleDB official repository
+- **Game Assets**: Links maintained in manifest files
+- **Documentation**: SchaleDB API documentation
 
 ---
 
