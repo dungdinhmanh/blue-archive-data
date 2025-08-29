@@ -1,0 +1,26 @@
+[
+  {
+    "character_id": 10000,
+    "character_name": "Aru",
+    "name": "Wine Red/Admire",
+    "type": "SR",
+    "category": "Exclusive",
+    "description": "A semi-automatic sniper rifle with an antique design cherished by Aru. Her hard-boiled nature intensifies just by carrying it.",
+    "base_stats": {
+      "attack": 162,
+      "max_hp": 561
+    },
+    "max_level": 40,
+    "passive_skill": {
+      "name": "The Gravity of a Boss+",
+      "description": "Increases Crit DMG by 2000 plus a further 14%",
+      "type": "Enhanced Skill+"
+    },
+    "upgrade_tiers": [
+      {"tier": 1, "max_level": 10},
+      {"tier": 2, "max_level": 20},
+      {"tier": 3, "max_level": 30}
+    ],
+    "image_url": "https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/images/weapons/10000.webp"
+  }
+]

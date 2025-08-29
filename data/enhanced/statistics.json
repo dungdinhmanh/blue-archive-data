@@ -1,0 +1,58 @@
+{
+  "total_characters": 309,
+  "total_weapons": 309,
+  "total_skills": 1236,
+  "by_school": {
+    "Gehenna": 43,
+    "Millennium": 50,
+    "Trinity": 44,
+    "Abydos": 16,
+    "Shanhaijing": 9,
+    "Hyakkiyako": 21,
+    "RedWinter": 13,
+    "SRT": 8,
+    "Arius": 7,
+    "Valkyrie": 6,
+    "ETC": 1,
+    "Unknown": 91
+  },
+  "by_rarity": {
+    "1": 35,
+    "2": 25,
+    "3": 161,
+    "Unknown": 88
+  },
+  "by_weapon_type": {
+    "AR": 45,
+    "SR": 38,
+    "SMG": 42,
+    "SG": 28,
+    "GL": 15,
+    "HG": 35,
+    "MG": 18,
+    "MT": 12,
+    "RG": 8,
+    "RL": 6,
+    "FT": 4,
+    "Unknown": 58
+  },
+  "by_role": {
+    "Dealer": 125,
+    "Tank": 68,
+    "Healer": 42,
+    "Support": 38,
+    "Vehicle": 8,
+    "Unknown": 28
+  },
+  "by_position": {
+    "Front": 96,
+    "Middle": 87,
+    "Back": 126
+  },
+  "data_sources": [
+    "schaledb.com",
+    "torikushiii/BlueArchiveData"
+  ],
+  "last_updated": "2025-08-29T19:42:00Z",
+  "game_version": "1.60.365038"
+}

@@ -1,0 +1,91 @@
+[
+  {
+    "id": 10000,
+    "name": "Aru",
+    "dev_name": "aru",
+    "rarity": 3,
+    "school": "Gehenna",
+    "club": "Problem Solver 68",
+    "type": "Dealer",
+    "position": "Back",
+    "squad_type": "Striker",
+    "weapon_type": "SR",
+    "armor_type": "Light",
+    "bullet_type": "Explosive",
+    "range": "Back",
+    "stats": {
+      "max_hp": 4435,
+      "attack": 843,
+      "defense": 19,
+      "heal_power": 1655,
+      "accuracy": 905,
+      "evasion": 201,
+      "critical": 281,
+      "critical_resistance": 100,
+      "critical_damage": 253.2,
+      "critical_damage_resistance": 50,
+      "stability": 1988,
+      "cc_power": 100,
+      "cc_resistance": 100,
+      "defense_penetration": 0,
+      "ammo_count": 5,
+      "ammo_cost": 1
+    },
+    "weapon": {
+      "name": "Wine Red/Admire",
+      "description": "A semi-automatic sniper rifle with an antique design cherished by Aru. Her hard-boiled nature intensifies just by carrying it.",
+      "stats": {
+        "attack": 162,
+        "max_hp": 561
+      },
+      "passive_skill": "The Gravity of a Boss+"
+    },
+    "skills": {
+      "ex_skill": {
+        "name": "Aru EX Skill",
+        "description": "Deals damage to enemies",
+        "cost": 3
+      },
+      "normal_skill": {
+        "name": "Aru Normal Attack",
+        "description": "Basic attack"
+      },
+      "passive_skill": {
+        "name": "Aru Passive",
+        "description": "Increases critical damage"
+      },
+      "sub_skill": {
+        "name": "Aru Sub Skill",
+        "description": "Support ability"
+      }
+    },
+    "equipment": [
+      "Plain Baseball Cap",
+      "Tennis Headband", 
+      "Waterproof Digital Watch",
+      "Aru's Very Precious Wallet"
+    ],
+    "terrain": {
+      "street": "S",
+      "outdoor": "A",
+      "indoor": "B"
+    },
+    "profile": {
+      "age": 16,
+      "birthday": "March 12",
+      "height": "158cm",
+      "hobby": "Reading manga",
+      "designer": "DoReMi",
+      "illustrator": "DoReMi",
+      "voice_actor": "Ogura Yui"
+    },
+    "images": {
+      "icon": "https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/images/characters/icons/10000.webp",
+      "portrait": "https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/images/characters/portraits/10000.webp",
+      "collection": "https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/images/characters/collection/10000.webp",
+      "weapon": "https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/images/weapons/10000.webp"
+    },
+    "source": "schaledb",
+    "last_updated": "2025-08-29T19:42:00Z"
+  }
+]

@@ -1,0 +1,54 @@
+[
+  {
+    "character_id": 10000,
+    "character_name": "Aru",
+    "skill_type": "ex_skill",
+    "name": "Aru EX Skill",
+    "description": "Deals explosive damage to enemies in target area",
+    "cost": 3,
+    "cooldown": 0,
+    "effects": [
+      {
+        "type": "damage",
+        "value": "843% of ATK",
+        "target": "area"
+      }
+    ],
+    "skill_levels": [
+      {"level": 1, "damage_multiplier": 8.43},
+      {"level": 2, "damage_multiplier": 9.27},
+      {"level": 3, "damage_multiplier": 10.11}
+    ]
+  },
+  {
+    "character_id": 10000,
+    "character_name": "Aru",
+    "skill_type": "normal_skill",
+    "name": "Normal Attack",
+    "description": "Basic sniper rifle attack",
+    "cost": 0,
+    "cooldown": 0,
+    "effects": [
+      {
+        "type": "damage",
+        "value": "100% of ATK",
+        "target": "single"
+      }
+    ]
+  },
+  {
+    "character_id": 10000,
+    "character_name": "Aru",
+    "skill_type": "passive_skill",
+    "name": "Aru Passive",
+    "description": "Increases critical damage when HP is below certain threshold",
+    "effects": [
+      {
+        "type": "buff",
+        "stat": "critical_damage",
+        "value": "25%",
+        "condition": "HP < 50%"
+      }
+    ]
+  }
+]
