@@ -29,8 +29,6 @@ blue-archive-data/
 │   ├── ba_enhanced_fetcher.py     # Enhanced data fetching
 │   ├── ba_supabase_sync.py        # Basic Supabase sync
 │   └── [other scripts]           # Additional processing tools
-├── cdn_manifest.json     # CDN asset manifest
-├── image_manifest.json   # Image asset references
 └── requirements.txt      # Python dependencies
 ```
 
@@ -112,12 +110,6 @@ The pipeline ensures full compatibility with Supabase database schema:
 - ✅ Skills data with conditional field inclusion
 - ✅ No fabricated or invalid fields
 - ✅ Normalized lookup tables support
-
-## 🔗 External Resources
-
-- **Images**: Referenced via SchaleDB official repository
-- **Game Assets**: Links maintained in manifest files
-- **Documentation**: SchaleDB API documentation
 
 ---
 
