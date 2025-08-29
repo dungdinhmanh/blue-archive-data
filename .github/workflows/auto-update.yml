@@ -1,0 +1,214 @@
+name: Auto-Update Blue Archive Data
+
+on:
+  schedule:
+    # Run monthly on the 1st at 00:00 UTC
+    - cron: '0 0 1 * *'
+  workflow_dispatch: # Allow manual trigger
+  
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+  SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+
+jobs:
+  check-version:
+    runs-on: ubuntu-latest
+    outputs:
+      should-update: ${{ steps.version-check.outputs.should-update }}
+      current-version: ${{ steps.version-check.outputs.current-version }}
+      
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Check Blue Archive version
+        id: version-check
+        run: |
+          # Get current version from API
+          LATEST_VERSION=$(curl -s "https://prod-noticeindex.bluearchiveyostar.com/prod/index.json" | jq -r '.LatestClientVersion')
+          
+          # Get stored version (if exists)
+          if [ -f "version.txt" ]; then
+            STORED_VERSION=$(cat version.txt)
+          else
+            STORED_VERSION=""
+          fi
+          
+          echo "Latest version: $LATEST_VERSION"
+          echo "Stored version: $STORED_VERSION"
+          echo "current-version=$LATEST_VERSION" >> $GITHUB_OUTPUT
+          
+          # Check if update is needed
+          if [ "$LATEST_VERSION" != "$STORED_VERSION" ]; then
+            echo "should-update=true" >> $GITHUB_OUTPUT
+            echo "New version detected: $LATEST_VERSION"
+          else
+            echo "should-update=false" >> $GITHUB_OUTPUT
+            echo "No version change detected"
+          fi
+
+  update-data:
+    needs: check-version
+    if: needs.check-version.outputs.should-update == 'true'
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          
+      - name: Install dependencies
+        run: |
+          pip install requests pandas supabase
+          
+      - name: Download character data
+        run: |
+          # Create data directory
+          mkdir -p data
+          
+          # Fetch from BlueArchiveData API
+          curl -s "https://raw.githubusercontent.com/torikushiii/BlueArchiveData/main/global/characters.json" > data/characters_raw.json
+          
+          # Fetch from alternative API
+          curl -s "https://api.ennead.cc/buruaka/character" > data/characters_alt.json
+          
+      - name: Process and validate data
+        run: |
+          python3 << 'EOF'
+          import json
+          import requests
+          from datetime import datetime
+          
+          # Load raw data
+          with open('data/characters_raw.json', 'r') as f:
+              characters_raw = json.load(f)
+          
+          # Process and clean data
+          processed_characters = []
+          for char in characters_raw:
+              if char.get('name') and char.get('school'):
+                  processed_char = {
+                      'id': char.get('id'),
+                      'name': char.get('name'),
+                      'dev_name': char.get('devname', char.get('name', '').lower()),
+                      'rarity': char.get('rarity'),
+                      'school': char.get('school'),
+                      'club': char.get('club'),
+                      'type': char.get('role'),
+                      'weapon_type': char.get('weaponType'),
+                      'armor_type': char.get('armorType'),
+                      'bullet_type': char.get('bulletType'),
+                      'range': char.get('range'),
+                      'equipment': char.get('equipment', []),
+                      'image_url': f"https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/images/characters/{char.get('devname', char.get('name', '').lower())}.png",
+                      'school_icon_url': f"https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/images/schools/{char.get('school', '').lower()}.png",
+                      'updated_at': datetime.now().isoformat()
+                  }
+                  processed_characters.append(processed_char)
+          
+          # Save processed data
+          with open('data/characters.json', 'w', encoding='utf-8') as f:
+              json.dump(processed_characters, f, ensure_ascii=False, indent=2)
+          
+          # Generate statistics
+          stats = {
+              'total_characters': len(processed_characters),
+              'by_school': {},
+              'by_rarity': {},
+              'last_updated': datetime.now().isoformat()
+          }
+          
+          for char in processed_characters:
+              school = char.get('school', 'Unknown')
+              rarity = char.get('rarity', 'Unknown')
+              
+              stats['by_school'][school] = stats['by_school'].get(school, 0) + 1
+              stats['by_rarity'][rarity] = stats['by_rarity'].get(rarity, 0) + 1
+          
+          with open('data/character_statistics.json', 'w', encoding='utf-8') as f:
+              json.dump(stats, f, ensure_ascii=False, indent=2)
+          
+          print(f"Processed {len(processed_characters)} characters")
+          EOF
+          
+      - name: Download character images
+        run: |
+          python3 << 'EOF'
+          import json
+          import requests
+          import os
+          from time import sleep
+          
+          # Create images directory
+          os.makedirs('images/characters', exist_ok=True)
+          os.makedirs('images/schools', exist_ok=True)
+          
+          # Load character data
+          with open('data/characters.json', 'r') as f:
+              characters = json.load(f)
+          
+          downloaded_count = 0
+          
+          for char in characters[:50]:  # Limit to avoid timeout
+              name = char.get('name')
+              dev_name = char.get('dev_name')
+              
+              if not name or not dev_name:
+                  continue
+              
+              # Try to download character image
+              image_urls = [
+                  f"https://static.miraheze.org/bluearchivewiki/thumb/d/db/{name}.png/266px-{name}.png",
+                  f"https://static.miraheze.org/bluearchivewiki/thumb/a/a6/{name}.png/266px-{name}.png"
+              ]
+              
+              for url in image_urls:
+                  try:
+                      response = requests.get(url, timeout=10)
+                      if response.status_code == 200:
+                          with open(f'images/characters/{dev_name}.png', 'wb') as f:
+                              f.write(response.content)
+                          downloaded_count += 1
+                          print(f"Downloaded: {name}")
+                          break
+                  except:
+                      continue
+              
+              sleep(0.5)  # Rate limiting
+          
+          print(f"Downloaded {downloaded_count} character images")
+          EOF
+          
+      - name: Update version file
+        run: |
+          echo "${{ needs.check-version.outputs.current-version }}" > version.txt
+          
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Auto-update: Blue Archive v${{ needs.check-version.outputs.current-version }}" || exit 0
+          git push
+
+  notify-completion:
+    needs: [check-version, update-data]
+    if: always()
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Update completion status
+        run: |
+          if [ "${{ needs.update-data.result }}" = "success" ]; then
+            echo "✅ Auto-update completed successfully"
+            echo "Version: ${{ needs.check-version.outputs.current-version }}"
+          elif [ "${{ needs.check-version.outputs.should-update }}" = "false" ]; then
+            echo "ℹ️ No update needed - version unchanged"
+          else
+            echo "❌ Auto-update failed"
+          fi
