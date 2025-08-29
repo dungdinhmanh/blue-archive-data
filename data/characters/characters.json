@@ -1,0 +1,150 @@
+[
+  {
+    "id": 10000,
+    "name": "Aru",
+    "dev_name": "aru",
+    "school": "Gehenna",
+    "club": "Problem Solver 68",
+    "rarity": 3,
+    "squad_type": "Striker",
+    "position": "Back",
+    "weapon_type": "SR",
+    "armor_type": "Light",
+    "bullet_type": "Explosive",
+    "terrain": {
+      "street": "S",
+      "outdoor": "A",
+      "indoor": "B"
+    },
+    "profile": {
+      "age": "16",
+      "birthday": "March 12",
+      "height": "158cm",
+      "hobby": "Reading manga"
+    },
+    "stats": {
+      "max_hp": 4435,
+      "attack": 843,
+      "defense": 19,
+      "accuracy": 905
+    },
+    "skills": [
+      {
+        "name": "EX Skill",
+        "description": "Deals damage",
+        "cost": 3
+      }
+    ],
+    "weapon": {
+      "name": "Wine Red/Admire",
+      "description": "Semi-automatic sniper rifle"
+    },
+    "equipment": [
+      "Plain Baseball Cap",
+      "Tennis Headband",
+      "Waterproof Digital Watch"
+    ],
+    "is_limited": false,
+    "images": {
+      "icon": "https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/images/characters/icons/10000.webp",
+      "portrait": "https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/images/characters/portraits/10000.webp",
+      "collection": "https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/images/characters/collection/10000.webp"
+    }
+  },
+  {
+    "id": 10001,
+    "name": "Mutsuki",
+    "dev_name": "mutsuki",
+    "school": "Gehenna",
+    "club": "Problem Solver 68",
+    "rarity": 3,
+    "squad_type": "Striker",
+    "position": "Front",
+    "weapon_type": "SMG",
+    "armor_type": "Light",
+    "bullet_type": "Explosive",
+    "terrain": {
+      "street": "A",
+      "outdoor": "B",
+      "indoor": "S"
+    },
+    "profile": {
+      "age": "16",
+      "birthday": "December 15",
+      "height": "139cm"
+    },
+    "stats": {
+      "max_hp": 3521,
+      "attack": 654,
+      "defense": 15
+    },
+    "skills": [
+      {
+        "name": "Mutsuki EX",
+        "description": "Explosive damage"
+      }
+    ],
+    "weapon": {
+      "name": "Mutsuki Weapon",
+      "description": "SMG weapon"
+    },
+    "equipment": [
+      "Equipment 1",
+      "Equipment 2"
+    ],
+    "is_limited": false,
+    "images": {
+      "icon": "https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/images/characters/icons/10001.webp",
+      "portrait": "https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/images/characters/portraits/10001.webp",
+      "collection": "https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/images/characters/collection/10001.webp"
+    }
+  },
+  {
+    "id": 10002,
+    "name": "Haruka",
+    "dev_name": "haruka",
+    "school": "Gehenna",
+    "club": "Problem Solver 68",
+    "rarity": 3,
+    "squad_type": "Striker",
+    "position": "Middle",
+    "weapon_type": "GL",
+    "armor_type": "Heavy",
+    "bullet_type": "Explosive",
+    "terrain": {
+      "street": "B",
+      "outdoor": "A",
+      "indoor": "A"
+    },
+    "profile": {
+      "age": "17",
+      "birthday": "September 7",
+      "height": "163cm"
+    },
+    "stats": {
+      "max_hp": 4123,
+      "attack": 721,
+      "defense": 22
+    },
+    "skills": [
+      {
+        "name": "Haruka EX",
+        "description": "Area damage"
+      }
+    ],
+    "weapon": {
+      "name": "Haruka Weapon",
+      "description": "Grenade launcher"
+    },
+    "equipment": [
+      "Equipment A",
+      "Equipment B"
+    ],
+    "is_limited": false,
+    "images": {
+      "icon": "https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/images/characters/icons/10002.webp",
+      "portrait": "https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/images/characters/portraits/10002.webp",
+      "collection": "https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/images/characters/collection/10002.webp"
+    }
+  }
+]
