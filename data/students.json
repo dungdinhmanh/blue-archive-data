@@ -1,0 +1,58 @@
+[
+  {
+    "Id": 10000,
+    "Name": "Aru",
+    "DevName": "aru",
+    "School": "Gehenna",
+    "Club": "Problem Solver 68",
+    "StarGrade": 3,
+    "SquadType": "Striker",
+    "TacticRole": "Dealer",
+    "Position": "Back",
+    "BulletType": "Explosive",
+    "ArmorType": "Light",
+    "WeaponType": "SR",
+    "Equipment": ["Plain Baseball Cap", "Tennis Headband", "Waterproof Digital Watch"],
+    "Terrain": {
+      "Street": "S",
+      "Outdoor": "A",
+      "Indoor": "B"
+    },
+    "Profile": {
+      "Age": "16",
+      "Birthday": "March 12",
+      "Height": "158cm",
+      "Hobby": "Reading manga",
+      "Designer": "DoReMi",
+      "Illustrator": "DoReMi",
+      "CV": "Ogura Yui"
+    },
+    "Stat": {
+      "AttackPower1": 843,
+      "MaxHP1": 4435,
+      "DefensePower1": 19,
+      "HealPower1": 1655,
+      "AccuracyPoint1": 905,
+      "DodgePoint1": 201,
+      "CriticalPoint1": 281,
+      "StabilityPoint1": 1988,
+      "Range1": 650,
+      "AmmoCount1": 5,
+      "AmmoCost1": 1
+    },
+    "Skills": [
+      {
+        "Name": "Aru EX Skill",
+        "Description": "Deals damage to enemies",
+        "Cost": 3
+      }
+    ],
+    "Weapon": {
+      "Id": 10000,
+      "Name": "Wine Red/Admire",
+      "Description": "A semi-automatic sniper rifle with an antique design cherished by Aru."
+    },
+    "Released": [true, true],
+    "IsLimited": false
+  }
+]
