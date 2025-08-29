@@ -1,82 +1,85 @@
 # Blue Archive Data Pipeline
 
-Comprehensive Blue Archive game data extraction, processing, and synchronization system.
+Automated data extraction and synchronization pipeline for Blue Archive game data.
 
-## Features
+## 🎯 Features
 
-- **Data Extraction**: Fetch character data from multiple sources
-- **Data Processing**: Clean and normalize game data
-- **Asset Management**: Download and organize game assets
-- **Database Sync**: Automated Supabase synchronization
-- **CDN Integration**: Fast asset delivery via jsdelivr
+- **Character Data Extraction**: Fetch comprehensive character data from multiple sources
+- **Image Assets**: Complete SchaleDB image collection with CDN delivery
+- **Supabase Integration**: Automated database synchronization
+- **Clean Data Pipeline**: Processed and normalized character datasets
 
-## Structure
+## 📁 Repository Structure
 
 ```
 blue-archive-data/
 ├── data/
-│   ├── characters/           # Character data files
-│   ├── items/               # Item and equipment data
-│   └── events/              # Event data
-├── images/
-│   ├── characters/          # Character images
-│   │   ├── icons/
-│   │   ├── portraits/
-│   │   └── collection/
-│   ├── weapons/             # Weapon images
-│   └── equipment/           # Equipment images
-├── scripts/
-│   ├── ba_enhanced_fetcher.py    # Data extraction
-│   ├── ba_supabase_sync.py       # Database sync
-│   ├── ba_asset_manager.py       # Asset management
-│   └── ba_sync_complete.py       # Complete sync process
-└── requirements.txt
+│   ├── characters/          # Processed character data (JSON)
+│   └── README.md           # Data documentation
+├── images/                 # SchaleDB image assets
+│   ├── student/           # Character images (icon, portrait, collection, lobby)
+│   ├── weapon/            # Weapon images
+│   ├── equipment/         # Equipment images
+│   └── [other categories] # UI, background, etc.
+├── scripts/               # Data processing scripts
+│   ├── ba_community_fetcher.py
+│   ├── ba_sync_complete.py
+│   ├── clean_characters_data.py
+│   └── create_final_characters_json.py
+└── requirements.txt       # Python dependencies
 ```
 
-## Usage
+## 🌐 CDN Usage
 
-1. **Install dependencies**:
+Images are available via jsdelivr CDN:
+
+```
+https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/images/student/icon/{character_id}.webp
+https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/images/weapon/{weapon_id}.webp
+```
+
+## 🚀 Usage
+
+1. **Install dependencies:**
    ```bash
    pip install -r requirements.txt
    ```
 
-2. **Complete sync (recommended)**:
+2. **Fetch character data:**
+   ```bash
+   python scripts/ba_community_fetcher.py
+   ```
+
+3. **Process and clean data:**
+   ```bash
+   python scripts/clean_characters_data.py
+   python scripts/create_final_characters_json.py
+   ```
+
+4. **Sync to Supabase:**
    ```bash
    python scripts/ba_sync_complete.py
    ```
 
-3. **Individual operations**:
-   ```bash
-   # Extract data only
-   python scripts/ba_enhanced_fetcher.py
-   
-   # Sync to database only
-   python scripts/ba_supabase_sync.py
-   
-   # Manage assets only
-   python scripts/ba_asset_manager.py
-   ```
+## 📊 Data Sources
 
-## API Access
+- **Character Data**: Community APIs and GitHub repositories
+- **Images**: SchaleDB official repository
+- **Database**: Supabase with Row Level Security
 
-**Supabase REST API**:
-```
-GET https://bpvdkhsgznuibgmjsnjz.supabase.co/rest/v1/characters
-```
+## 🔧 Configuration
 
-**CDN URLs**:
-```
-https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/data/characters/characters.json
-https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/images/characters/icons/{id}.webp
-https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/images/weapons/{id}.webp
-```
+Set environment variables:
+- `SUPABASE_URL`: Your Supabase project URL
+- `SUPABASE_SERVICE_ROLE_KEY`: Service role key for database operations
 
-## Environment Variables
+## 📈 Data Statistics
 
-```bash
-SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
-```
+- **Characters**: 300+ processed characters
+- **Images**: 1000+ game assets
+- **Categories**: Students, weapons, equipment, UI elements
+- **Formats**: JSON data, WebP images
 
-## License
+---
 
-MIT License - see LICENSE file for details.
+**Blue Archive Data Pipeline** - Automated, clean, and efficient! 🎯
