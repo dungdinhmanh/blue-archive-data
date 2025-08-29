@@ -1,0 +1,53 @@
+[
+  {
+    "id": 10000,
+    "name": "Aru",
+    "dev_name": "aru",
+    "rarity": "SSR",
+    "school": "Gehenna",
+    "club": "Kohshinjo68",
+    "type": "Dealer",
+    "weapon_type": "SR",
+    "armor_type": "Light",
+    "bullet_type": "Explosive",
+    "range": "Back",
+    "equipment": ["Hat", "Hairpin", "Watch"],
+    "image_url": "https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/images/characters/aru.png",
+    "school_icon_url": "https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/images/schools/gehenna.png",
+    "updated_at": "2025-08-29T19:31:00Z"
+  },
+  {
+    "id": 10001,
+    "name": "Eimi",
+    "dev_name": "eimi",
+    "rarity": "SSR",
+    "school": "Millennium",
+    "club": "SPTF",
+    "type": "Tank",
+    "weapon_type": "SG",
+    "armor_type": "Light",
+    "bullet_type": "Explosive",
+    "range": "Front",
+    "equipment": ["Shoes", "Bag", "Charm"],
+    "image_url": "https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/images/characters/eimi.png",
+    "school_icon_url": "https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/images/schools/millennium.png",
+    "updated_at": "2025-08-29T19:31:00Z"
+  },
+  {
+    "id": 10002,
+    "name": "Haruna",
+    "dev_name": "haruna",
+    "rarity": "SSR",
+    "school": "Gehenna",
+    "club": "GourmetClub",
+    "type": "Dealer",
+    "weapon_type": "SR",
+    "armor_type": "Heavy",
+    "bullet_type": "Mystic",
+    "range": "Back",
+    "equipment": ["Hat", "Hairpin", "Watch"],
+    "image_url": "https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/images/characters/haruna.png",
+    "school_icon_url": "https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/images/schools/gehenna.png",
+    "updated_at": "2025-08-29T19:31:00Z"
+  }
+]

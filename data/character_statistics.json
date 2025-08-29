@@ -1,0 +1,27 @@
+{
+  "total_characters": 309,
+  "by_school": {
+    "Gehenna": 43,
+    "Millennium": 50,
+    "Trinity": 44,
+    "Abydos": 16,
+    "Shanhaijing": 9,
+    "Hyakkiyako": 21,
+    "RedWinter": 13,
+    "SRT": 8,
+    "Arius": 7,
+    "Tokiwadai": 2,
+    "Valkyrie": 6,
+    "ETC": 1,
+    "Sakugawa": 1,
+    "null": 88
+  },
+  "by_rarity": {
+    "SSR": 161,
+    "SR": 25,
+    "R": 35,
+    "null": 88
+  },
+  "last_updated": "2025-08-29T19:31:00Z",
+  "game_version": "1.60.365038"
+}
