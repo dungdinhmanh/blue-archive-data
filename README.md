@@ -28,7 +28,8 @@ blue-archive-data/
 ├── scripts/
 │   ├── ba_enhanced_fetcher.py    # Data extraction
 │   ├── ba_supabase_sync.py       # Database sync
-│   └── ba_asset_manager.py       # Asset management
+│   ├── ba_asset_manager.py       # Asset management
+│   └── ba_sync_complete.py       # Complete sync process
 └── requirements.txt
 ```
 
@@ -39,22 +40,41 @@ blue-archive-data/
    pip install -r requirements.txt
    ```
 
-2. **Extract data**:
+2. **Complete sync (recommended)**:
    ```bash
+   python scripts/ba_sync_complete.py
+   ```
+
+3. **Individual operations**:
+   ```bash
+   # Extract data only
    python scripts/ba_enhanced_fetcher.py
-   ```
-
-3. **Sync to database**:
-   ```bash
+   
+   # Sync to database only
    python scripts/ba_supabase_sync.py
+   
+   # Manage assets only
+   python scripts/ba_asset_manager.py
    ```
 
-## CDN URLs
+## API Access
 
-Assets are available via jsdelivr CDN:
+**Supabase REST API**:
 ```
+GET https://bpvdkhsgznuibgmjsnjz.supabase.co/rest/v1/characters
+```
+
+**CDN URLs**:
+```
+https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/data/characters/characters.json
 https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/images/characters/icons/{id}.webp
 https://cdn.jsdelivr.net/gh/dungdinhmanh/blue-archive-data@main/images/weapons/{id}.webp
+```
+
+## Environment Variables
+
+```bash
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
 ```
 
 ## License
